@@ -5,63 +5,63 @@ import datetime
 
 app = Flask(__name__)
 
-# Usamos el puerto 8080 si está definido en las variables de entorno, o 80 por defecto
+# Puerto (usa 8080 si está definido, caso contrario 80)
 port = int(os.environ.get("PORT", 80))
 
-# Simulador de IA - Respuestas predefinidas
-AI_RESPONSES = [
-    "¡Hola! Soy una IA simple creada por Jimmy Espinoza. ¿En qué puedo ayudarte?",
-    "Como IA, puedo decirte que hoy es un gran día para aprender Docker y CI/CD.",
-    "Mi función principal es demostrar un pipeline de CI/CD funcional.",
-    "¡Excelente! El despliegue automático está funcionando correctamente.",
-    "Soy parte del proyecto de Jimmy Espinoza para el examen de CI/CD."
+# IA simulada — texto renovado y creado para Irina
+AI_MESSAGES = [
+    "Hola, soy un pequeño asistente virtual creado por Irina. Estoy lista para pensar por ti.",
+    "Los sistemas CI/CD de hoy funcionan mejor cuando el café no falta… pero también cuando Irina los configura bien.",
+    "Procesando tu solicitud… uhmm… parece que todo funciona perfecto en este despliegue.",
+    "La versión 1.0.5 está corriendo sin fallos. Buen trabajo, Irina.",
+    "¿Sabías que esta IA vive dentro de un contenedor Docker? Gracias a Irina por traerme al mundo."
 ]
 
 @app.route('/')
-def hello_world():
+def home():
     return '''
-    <h1>¡Este es mi examen final!</h1>
-    <p>Aplicación Flask con IA - Versión 1.0.5</p>
-    <p>Endpoints disponibles:</p>
+    <h1>Proyecto de Examen CI/CD</h1>
+    <p>Aplicación Flask con IA integrada — Versión 1.0.5</p>
+    <p>Endpoints:</p>
     <ul>
-        <li><a href="/ai">/ai</a> - Consulta a la IA</li>
-        <li><a href="/health">/health</a> - Estado de la aplicación</li>
-        <li><a href="/info">/info</a> - Información del sistema</li>
+        <li><a href="/ai">/ai</a> → Respuesta de IA</li>
+        <li><a href="/health">/health</a> → Estado del servicio</li>
+        <li><a href="/info">/info</a> → Información del sistema</li>
     </ul>
     '''
 
 @app.route('/ai')
 def ai_endpoint():
-    """Endpoint que simula una respuesta de IA"""
-    response = random.choice(AI_RESPONSES)
+    """Genera una respuesta aleatoria de la IA"""
+    msg = random.choice(AI_MESSAGES)
     return jsonify({
-        "ai_response": response,
+        "response": msg,
         "timestamp": datetime.datetime.now().isoformat(),
         "version": "1.0.5",
-        "author": "Jimmy Espinoza"
+        "author": "Irina"
     })
 
 @app.route('/health')
-def health_check():
-    """Endpoint para verificar el estado de la aplicación"""
+def health():
+    """Indica que la aplicación está funcionando"""
     return jsonify({
-        "status": "healthy",
+        "status": "running",
+        "service": "Flask AI App",
         "timestamp": datetime.datetime.now().isoformat(),
         "version": "1.0.5"
     })
 
 @app.route('/info')
 def info():
-    """Endpoint con información del sistema"""
+    """Información del proyecto"""
     return jsonify({
-        "app_name": "Flask AI App - Jimmy Espinoza",
+        "application": "AI Flask Service - Irina",
         "version": "1.0.5",
-        "python_version": "3.10",
-        "framework": "Flask 3.1.2",
-        "deployment": "Docker + CI/CD",
-        "author": "Jimmy Espinoza"
+        "framework": "Flask 3.1.x",
+        "python": "3.10",
+        "deployment": "Docker + CI/CD automático",
+        "author": "Irina"
     })
 
 if __name__ == '__main__':
-    # Escuchar en 0.0.0.0 para aceptar conexiones externas
     app.run(host='0.0.0.0', port=port, debug=False)

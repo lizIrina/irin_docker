@@ -1,22 +1,22 @@
 version: "3.8"
 
 services:
-  espinoza-app:
-    image: ghcr.io/jimmy0016/espinoza:1.0.5
+  morocho-app:
+    image: ghcr.io/irina/morocho:1.0.5
     deploy:
       replicas: 1
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.espinoza.entrypoints=http"
-        - "traefik.http.routers.espinoza.rule=Host(`espinoza.byronrm.com`)"
-        - "traefik.http.middlewares.espinoza-https-redirect.redirectscheme.scheme=https"
-        - "traefik.http.routers.espinoza.middlewares=espinoza-https-redirect"
-        - "traefik.http.routers.espinoza-secure.entrypoints=https"
-        - "traefik.http.routers.espinoza-secure.rule=Host(`espinoza.byronrm.com`)"
-        - "traefik.http.routers.espinoza-secure.tls=true"
-        - "traefik.http.routers.espinoza-secure.tls.certresolver=http"
-        - "traefik.http.routers.espinoza-secure.service=espinoza"
-        - "traefik.http.services.espinoza.loadbalancer.server.port=80"
+        - "traefik.http.routers.morocho.entrypoints=http"
+        - "traefik.http.routers.morocho.rule=Host(`morocho.byronrm.com`)"
+        - "traefik.http.middlewares.morocho-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.morocho.middlewares=morocho-https-redirect"
+        - "traefik.http.routers.morocho-secure.entrypoints=https"
+        - "traefik.http.routers.morocho-secure.rule=Host(`morocho.byronrm.com`)"
+        - "traefik.http.routers.morocho-secure.tls=true"
+        - "traefik.http.routers.morocho-secure.tls.certresolver=http"
+        - "traefik.http.routers.morocho-secure.service=morocho"
+        - "traefik.http.services.morocho.loadbalancer.server.port=80"
         - "traefik.docker.network=traefik-public"
     networks:
       - traefik-public

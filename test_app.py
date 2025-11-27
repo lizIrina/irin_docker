@@ -13,7 +13,7 @@ class FlaskAppTestCase(unittest.TestCase):
         """Test del endpoint principal"""
         response = self.app.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Este es mi examen final', response.data)
+        self.assertIn(b'Aplicacion creada por Irina', response.data)
         self.assertIn(b'1.0.5', response.data)
 
     def test_ai_endpoint(self):
@@ -25,7 +25,7 @@ class FlaskAppTestCase(unittest.TestCase):
         self.assertIn('ai_response', data)
         self.assertIn('timestamp', data)
         self.assertEqual(data['version'], '1.0.5')
-        self.assertEqual(data['author'], 'Jimmy Espinoza')
+        self.assertEqual(data['author'], 'Irina')
 
     def test_health_endpoint(self):
         """Test del endpoint de salud"""
@@ -44,7 +44,7 @@ class FlaskAppTestCase(unittest.TestCase):
         
         data = json.loads(response.data)
         self.assertEqual(data['version'], '1.0.5')
-        self.assertEqual(data['author'], 'Jimmy Espinoza')
+        self.assertEqual(data['author'], 'Irina')
         self.assertIn('Flask AI App', data['app_name'])
 
     def test_nonexistent_endpoint(self):
