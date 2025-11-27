@@ -1,8 +1,8 @@
-name: CI/CD Pipeline - Jimmy Espinoza (Build & Publish)
+name: CI/CD Pipeline - liz morocho (Build & Publish)
 
 on:
   push:
-    branches: "espinoza"
+    branches: "morocho"
 
 permissions:
   contents: read
@@ -62,7 +62,7 @@ jobs:
     
     - name: ✅ Build Success
       run: |
-        echo "✅ CI/CD Pipeline completado exitosamente!"
-        echo "📦 Imagen publicada: ghcr.io/${{ steps.repo.outputs.name }}:1.0.5"
-        echo "🌐 Para despliegue manual, usar: docker stack deploy -c stack.yml espinoza-stack"
-        echo "🔗 Aplicación disponible en: https://espinoza.byronrm.com"
+        echo " CI/CD Pipeline completado exitosamente!"
+        echo " Imagen publicada: ghcr.io/${{ steps.repo.outputs.name }}:1.0.5"
+        echo " Para despliegue manual, usar: docker stack deploy -c stack.yml morocho-stack"
+        echo " Aplicación disponible en: https://morocho.byronrm.com"
